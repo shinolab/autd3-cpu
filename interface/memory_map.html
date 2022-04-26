@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="../document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="../release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="../abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="../interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="../interface/memory_map.html" class="active"><strong aria-hidden="true">5.2.</strong> Memory map</a></li><li class="chapter-item expanded "><a href="../interface/operation.html"><strong aria-hidden="true">5.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="../control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/setup_compile.html"><strong aria-hidden="true">7.1.</strong> Setup/Compile</a></li><li class="chapter-item expanded "><a href="../appendix/faq.html"><strong aria-hidden="true">7.2.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="../appendix/license.html"><strong aria-hidden="true">7.3.</strong> License</a></li><li class="chapter-item expanded "><a href="../appendix/contribution.html"><strong aria-hidden="true">7.4.</strong> Contribution</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="../document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="../release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="../abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="../interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="../interface/memory_map.html" class="active"><strong aria-hidden="true">5.2.</strong> Memory map</a></li></ol></li><li class="chapter-item expanded "><a href="../control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../control/ecat_datagram.html"><strong aria-hidden="true">6.1.</strong> EtherCAT Datagram</a></li><li class="chapter-item expanded "><a href="../control/legacy.html"><strong aria-hidden="true">6.2.</strong> Legacy mode</a></li><li class="chapter-item expanded "><a href="../control/operation.html"><strong aria-hidden="true">6.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/faq.html"><strong aria-hidden="true">7.1.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="../appendix/license.html"><strong aria-hidden="true">7.2.</strong> License</a></li><li class="chapter-item expanded "><a href="../appendix/contribution.html"><strong aria-hidden="true">7.3.</strong> Contribution</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -141,6 +141,177 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="memory-map"><a class="header" href="#memory-map">Memory map</a></h1>
+<p>以下に, CPUボードから見たFPGA内のMemory mapを載せる.</p>
+<ul>
+<li>FPGA内部のBRAMは4つに分かれている. 書き込み時はアドレス上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span> (BRAM_SELECT) でこれを区別する.
+<ul>
+<li>0x0: Controller BRAM</li>
+<li>0x1: Modulator BRAM</li>
+<li>0x2: Normal BRAM</li>
+<li>0x3: STM BRAM</li>
+</ul>
+</li>
+<li>Modulator/STM BRAMはそのままだと書き込みアドレスが足りないので, セグメント方式を採用している.
+<ul>
+<li>Controller BRAM内の特定のアドレスに書き込まれたセグメント番号を使用し, 書き込むセグメントを選択する.</li>
+</ul>
+</li>
+</ul>
+<h2 id="controller"><a class="header" href="#controller">Controller</a></h2>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16 bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x0</td><td>0x000</td><td>CTL_REG</td><td>R/W</td></tr>
+<tr><td></td><td>0x001</td><td>7:0 = FPGA info</td><td>W</td></tr>
+<tr><td></td><td>0x010</td><td>EC_SYNC_CYCLE_TICKS</td><td>W</td></tr>
+<tr><td></td><td>0x011</td><td>EC_SYNC_TIME_0</td><td>W</td></tr>
+<tr><td></td><td>0x012</td><td>EC_SYNC_TIME_1</td><td>W</td></tr>
+<tr><td></td><td>0x013</td><td>EC_SYNC_TIME_2</td><td>W</td></tr>
+<tr><td></td><td>0x014</td><td>EC_SYNC_TIME_3</td><td>W</td></tr>
+<tr><td></td><td>0x020</td><td>0 = MOD_BRAM_SEGMENT</td><td>W</td></tr>
+<tr><td></td><td>0x021</td><td>MOD_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x022</td><td>MOD_FREQ_DIV_0</td><td>W</td></tr>
+<tr><td></td><td>0x023</td><td>MOD_FREQ_DIV_1</td><td>W</td></tr>
+<tr><td></td><td>0x03F</td><td>VERSION_NUM</td><td>R</td></tr>
+<tr><td></td><td>0x040</td><td>SILENT_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x041</td><td>SILENT_STEP</td><td>W</td></tr>
+<tr><td></td><td>0x050</td><td>4:0 = STM_BRAM_SEGMENT</td><td>W</td></tr>
+<tr><td></td><td>0x051</td><td>STM_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x052</td><td>STM_FREQ_DIV_0</td><td>W</td></tr>
+<tr><td></td><td>0x053</td><td>STM_FREQ_DIV_1</td><td>W</td></tr>
+<tr><td></td><td>0x054</td><td>SOUND_SPEED_0</td><td>W</td></tr>
+<tr><td></td><td>0x055</td><td>SOUND_SPEED_1</td><td>W</td></tr>
+<tr><td></td><td>0x100</td><td>CYCLE[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F8</td><td>CYCLE[248]</td><td>W</td></tr>
+</tbody></table>
+<ul>
+<li>CTL_REG bit
+<ul>
+<li>0: LEGACY_MODE</li>
+<li>4: FORCE_FAN</li>
+<li>5: OP_MODE (0: Normal, 1: STM)</li>
+<li>6: SEQ_MODE (0: Point STM, 1: Gain STM)</li>
+<li>8: SYNC_SET</li>
+<li>15: WDT_RST</li>
+</ul>
+</li>
+</ul>
+<h2 id="modulator"><a class="header" href="#modulator">Modulator</a></h2>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (1bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x1</td><td>0x0</td><td>0x0000</td><td>mod[1]/mod[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x0</td><td>0x3FFF</td><td>mod[32767]/mod[32766]</td><td>W</td></tr>
+<tr><td></td><td>0x1</td><td>0x0000</td><td>mod[32769]/mod[32768]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1</td><td>0x3FFF</td><td>mod[65535]/mod[65534]</td><td>W</td></tr>
+</tbody></table>
+<h2 id="normal"><a class="header" href="#normal">Normal</a></h2>
+<ul>
+<li>
+<p>Normal BRAMの中身はLEGACY_MODEによって変化する.</p>
+<ul>
+<li>LEGACY_MODE = 0の場合は, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">1</span><span class="mord">3</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>のDuty比/位相を書き込む</li>
+<li>LEGACY_MODE = 1の場合は, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>のDuty比/位相を書き込む</li>
+</ul>
+</li>
+<li>
+<p>LEGACY_MODE = 0</p>
+</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x2</td><td>0x000</td><td>12:0 = phase[0]</td><td>W</td></tr>
+<tr><td></td><td>0x001</td><td>12:0 = duty[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F0</td><td>12:0 = phase[248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F1</td><td>12:0 = duty[248]</td><td>W</td></tr>
+</tbody></table>
+<ul>
+<li>LEGACY_MODE = 1</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x2</td><td>0x000</td><td>7:0 = phase[0]<br>15:8 = duty[0]</td><td>W</td></tr>
+<tr><td></td><td>0x001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F0</td><td>7:0 = phase[248]<br>15:8 = duty[248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F1</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<h2 id="stm"><a class="header" href="#stm">STM</a></h2>
+<p>STM BRAMはPoint STMとGain STMで共用である.</p>
+<h3 id="point-stm-seq_mode--0"><a class="header" href="#point-stm-seq_mode--0">Point STM (SEQ_MODE == 0)</a></h3>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>x[0][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>y[0][13:0]/x[0][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0002</td><td>z[0][11:0]/y[0][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0003</td><td>duty_shift[0]/z[0][17:12]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0004-0x0007</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF8</td><td>x[2047][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF9</td><td>y[2047][13:0]/x[2047][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFA</td><td>z[2047][11:0]/y[2047][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFB</td><td>duty_shift[2047]/z[2047][17:12]</td><td>W</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FFC-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x00000</td><td>x[2048][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00001</td><td>y[2048][13:0]/x[2048][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00002</td><td>z[2048][11:0]/y[2048][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00003</td><td>duty_shift[2048]/z[2048][17:12]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00004-0x00007</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF8</td><td>x[65535][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF9</td><td>y[65535][13:0]/x[65535][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFA</td><td>z[65535][11:0]/y[65535][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFB</td><td>duty_shift[65535]/z[65535][17:12]</td><td>W</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FFC-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<h3 id="gain-stm-seq_mode--1"><a class="header" href="#gain-stm-seq_mode--1">Gain STM (SEQ_MODE == 1)</a></h3>
+<ul>
+<li>LEGACY_MODE = 0</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>12:0 = phase[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>12:0 = duty[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x01F0</td><td>12:0 = phase[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F1</td><td>12:0 = duty[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F2-0x01FF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3E00</td><td>12:0 = phase[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3E01</td><td>12:0 = duty[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>12:0 = phase[31][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>12:0 = duty[31][248]</td><td>W</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x0000</td><td>12:0 = phase[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>12:0 = duty[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>︙</td><td>︙</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>12:0 = phase[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>12:0 = duty[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<ul>
+<li>LEGACY_MODE = 1</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>7:0 = phase[0][0]<br>15:8 = duty[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x01F0</td><td>7:0 = phase[0][248]<br>15:8 = duty[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>0x01F2-0x01FF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3E00</td><td>7:0 = phase[31][0]<br>15:8 = duty[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3E01</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>7:0 = phase[31][248]<br>15:8 = duty[31][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x0000</td><td>7:0 = phase[32][0]<br>15:8 = duty[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>7:0 = phase[1023][248]<br>15:8 = duty[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/memory_map.md">Edit this file on GitHub.</a></footer>
                     </main>
 
@@ -149,7 +320,7 @@
                             <a rel="prev" href="../interface/cpu_bus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../interface/operation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../control/control.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -161,7 +332,7 @@
                     <a rel="prev" href="../interface/cpu_bus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../interface/operation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../control/control.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

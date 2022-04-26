@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Operation - AUTD3 CPU Firmware Specification</title>
+        <title>EtherCAT Datagram - AUTD3 CPU Firmware Specification</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="../document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="../release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="../abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="../interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="../interface/memory_map.html"><strong aria-hidden="true">5.2.</strong> Memory map</a></li><li class="chapter-item expanded "><a href="../interface/operation.html" class="active"><strong aria-hidden="true">5.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="../control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/setup_compile.html"><strong aria-hidden="true">7.1.</strong> Setup/Compile</a></li><li class="chapter-item expanded "><a href="../appendix/faq.html"><strong aria-hidden="true">7.2.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="../appendix/license.html"><strong aria-hidden="true">7.3.</strong> License</a></li><li class="chapter-item expanded "><a href="../appendix/contribution.html"><strong aria-hidden="true">7.4.</strong> Contribution</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="../document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="../release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="../abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="../interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="../interface/memory_map.html"><strong aria-hidden="true">5.2.</strong> Memory map</a></li></ol></li><li class="chapter-item expanded "><a href="../control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../control/ecat_datagram.html" class="active"><strong aria-hidden="true">6.1.</strong> EtherCAT Datagram</a></li><li class="chapter-item expanded "><a href="../control/legacy.html"><strong aria-hidden="true">6.2.</strong> Legacy mode</a></li><li class="chapter-item expanded "><a href="../control/operation.html"><strong aria-hidden="true">6.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/faq.html"><strong aria-hidden="true">7.1.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="../appendix/license.html"><strong aria-hidden="true">7.2.</strong> License</a></li><li class="chapter-item expanded "><a href="../appendix/contribution.html"><strong aria-hidden="true">7.3.</strong> Contribution</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -140,16 +140,59 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="operation"><a class="header" href="#operation">Operation</a></h1>
-<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/operation.md">Edit this file on GitHub.</a></footer>
+<h1 id="ethercat-datagram"><a class="header" href="#ethercat-datagram">EtherCAT Datagram</a></h1>
+<p>EtherCATからのデータは主に全デバイス共通のHeader部と各デバイス固有のBody部に分かれている.</p>
+<h2 id="header"><a class="header" href="#header">Header</a></h2>
+<p>Headerは<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>のデータ量を持つ.</p>
+<table><thead><tr><th>Index</th><th>DATA (1byte)</th></tr></thead><tbody>
+<tr><td>0</td><td>MEG_ID</td></tr>
+<tr><td>1</td><td>FPGA_CTL_REG</td></tr>
+<tr><td>2</td><td>CPU_CTL_REG</td></tr>
+<tr><td>3 - 127</td><td>HEAD_DATA</td></tr>
+</tbody></table>
+<p>3-127番目のデータは各操作ごとに異なる内容となる.</p>
+<p>MSG_IDはEtherCATのデータを区別する役割がある.
+EtherCATはその仕様上, 同じフレームが何度もデバイスに送られることがある.
+そのため, MSG_IDを参照して, すでに処理したかどうかを判定している.</p>
+<p>FPGA_CTL_REGはFPGAに書き込まれる制御レジスタであり, 以下の意味を持つ.</p>
+<ul>
+<li>FPGA_CTL_REG
+<ul>
+<li>0: LEGACY_MODE</li>
+<li>4: FORCE_FAN</li>
+<li>5: OP_MODE (0: Normal, 1: STM)</li>
+<li>6: SEQ_MODE (0: Point STM, 1: Gain STM)</li>
+<li>14: SYNC_SET</li>
+<li>15: WDT_RST</li>
+</ul>
+</li>
+</ul>
+<p>CPU_CTL_REGはCPUの制御レジスタであり, 以下の意味を持つ.</p>
+<ul>
+<li>CPU_CTL_REG
+<ul>
+<li>0: MOD_BEGIN</li>
+<li>1: MOD_END</li>
+<li>2: STM_BEGIN</li>
+<li>3: STM_END</li>
+<li>4: IS_DUTY</li>
+<li>5: CONFIG_SILENCER</li>
+<li>6: READS_FPGA_INFO</li>
+<li>7: DO_SYNC</li>
+</ul>
+</li>
+</ul>
+<h2 id="body"><a class="header" href="#body">Body</a></h2>
+<p>Bodyは<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mord">9</span><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>のデータ量を持ち, 内容は操作毎に異なる.</p>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/control/ecat_datagram.md">Edit this file on GitHub.</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../interface/memory_map.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../control/control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../control/control.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../control/legacy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -158,10 +201,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../interface/memory_map.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../control/control.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../control/control.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../control/legacy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

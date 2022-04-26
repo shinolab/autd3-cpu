@@ -78,7 +78,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="interface/memory_map.html"><strong aria-hidden="true">5.2.</strong> Memory map</a></li><li class="chapter-item expanded "><a href="interface/operation.html"><strong aria-hidden="true">5.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li class="chapter-item expanded "><a href="appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix/setup_compile.html"><strong aria-hidden="true">7.1.</strong> Setup/Compile</a></li><li class="chapter-item expanded "><a href="appendix/faq.html"><strong aria-hidden="true">7.2.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="appendix/license.html"><strong aria-hidden="true">7.3.</strong> License</a></li><li class="chapter-item expanded "><a href="appendix/contribution.html"><strong aria-hidden="true">7.4.</strong> Contribution</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="organization.html"><strong aria-hidden="true">1.</strong> Document organization</a></li><li class="chapter-item expanded "><a href="document_history.html"><strong aria-hidden="true">2.</strong> Document history</a></li><li class="chapter-item expanded "><a href="release_notes.html"><strong aria-hidden="true">3.</strong> Release notes</a></li><li class="chapter-item expanded "><a href="abbreviations.html"><strong aria-hidden="true">4.</strong> Abbreviations</a></li><li class="chapter-item expanded "><a href="interface/interface.html"><strong aria-hidden="true">5.</strong> FPGA Interface</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="interface/cpu_bus.html"><strong aria-hidden="true">5.1.</strong> CPU bus</a></li><li class="chapter-item expanded "><a href="interface/memory_map.html"><strong aria-hidden="true">5.2.</strong> Memory map</a></li></ol></li><li class="chapter-item expanded "><a href="control/control.html"><strong aria-hidden="true">6.</strong> Control</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="control/ecat_datagram.html"><strong aria-hidden="true">6.1.</strong> EtherCAT Datagram</a></li><li class="chapter-item expanded "><a href="control/legacy.html"><strong aria-hidden="true">6.2.</strong> Legacy mode</a></li><li class="chapter-item expanded "><a href="control/operation.html"><strong aria-hidden="true">6.3.</strong> Operation</a></li></ol></li><li class="chapter-item expanded "><a href="appendix/appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix/faq.html"><strong aria-hidden="true">7.1.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="appendix/license.html"><strong aria-hidden="true">7.2.</strong> License</a></li><li class="chapter-item expanded "><a href="appendix/contribution.html"><strong aria-hidden="true">7.3.</strong> Contribution</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,32 +142,411 @@
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="document-organization"><a class="header" href="#document-organization">Document organization</a></h1>
+<p>本文章の目的は, AUTD3に搭載されているCPUのFirmwareの仕様を記述することである.</p>
+<p>本文章の構成は以下の通りである.</p>
+<ul>
+<li><a href="./organization.html">Document organization</a></li>
+<li><a href="./document_history.html">Document history</a></li>
+<li><a href="./release_notes.html">Release notes</a></li>
+<li><a href="./abbreviations.html">Abbreviations</a></li>
+<li><a href="./interface/interface.html">FPGA Interface</a>
+<ul>
+<li><a href="./interface/cpu_bus.html">CPU bus</a></li>
+<li><a href="./interface/memory_map.html">Memory map</a></li>
+</ul>
+</li>
+<li><a href="./control/control.html">Control</a>
+<ul>
+<li><a href="./control/ecat_datagram.html">EtherCAT Datagram</a></li>
+<li><a href="./control/legacy.html">Legacy mode</a></li>
+<li><a href="./control/operation.html">Operation</a></li>
+</ul>
+</li>
+<li><a href="./appendix/appendix.html">Appendix</a>
+<ul>
+<li><a href="./appendix/faq.html">FAQ</a></li>
+<li><a href="./appendix/license.html">License</a></li>
+<li><a href="./appendix/contribution.html">Contribution</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="author-information"><a class="header" href="#author-information">Author Information</a></h2>
+<ul>
+<li>Name: 鈴木 颯</li>
+<li>email: suzuki[at]hapis.k.u-tokyo.ac.jp</li>
+</ul>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/organization.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="document-history"><a class="header" href="#document-history">Document history</a></h1>
+<table><thead><tr><th style="text-align: left">Date</th><th style="text-align: left">Description</th></tr></thead><tbody>
+<tr><td style="text-align: left">2022/4/26</td><td style="text-align: left">Version 2.0 初版</td></tr>
+</tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/document_history.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="release-notes"><a class="header" href="#release-notes">Release notes</a></h1>
+<table><thead><tr><th style="text-align: left">Date</th><th style="text-align: left">Version</th></tr></thead><tbody>
+<tr><td style="text-align: left">2022/4/26</td><td style="text-align: left">2.0</td></tr>
+</tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/release_notes.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="abbreviations"><a class="header" href="#abbreviations">Abbreviations</a></h1>
+<table><thead><tr><th style="text-align: left"></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: left">AUTD</td><td style="text-align: left">Airborne Ultrasound Tactile Display</td></tr>
+<tr><td style="text-align: left">FPGA</td><td style="text-align: left">Field Programmable Gate Array</td></tr>
+<tr><td style="text-align: left">WDT</td><td style="text-align: left">WatchDog Timer</td></tr>
+</tbody></table>
+<link rel="stylesheet" href="styles/table_wo_header.css">
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/abbreviations.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="fpga-interface"><a class="header" href="#fpga-interface">FPGA Interface</a></h1>
+<p>ここでは, CPUボードとFPGAとのインターフェースについて解説する.</p>
+<p><a href="https://shinolab.github.io/autd3-fpga">FPGAの仕様書</a>も参考されたい.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/interface.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="cpu-bus"><a class="header" href="#cpu-bus">CPU bus</a></h1>
+<p>CPUボードとFPGAとはパラレルのバスで接続されている.</p>
+<p>FPGAとのIOはメモリマップドIOとなっており, 0x44000000番地からマッピングされている.
+アドレスは<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">1</span><span class="mord">6</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>, データ幅は<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">1</span><span class="mord">6</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>である.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/cpu_bus.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="memory-map"><a class="header" href="#memory-map">Memory map</a></h1>
+<p>以下に, CPUボードから見たFPGA内のMemory mapを載せる.</p>
+<ul>
+<li>FPGA内部のBRAMは4つに分かれている. 書き込み時はアドレス上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span> (BRAM_SELECT) でこれを区別する.
+<ul>
+<li>0x0: Controller BRAM</li>
+<li>0x1: Modulator BRAM</li>
+<li>0x2: Normal BRAM</li>
+<li>0x3: STM BRAM</li>
+</ul>
+</li>
+<li>Modulator/STM BRAMはそのままだと書き込みアドレスが足りないので, セグメント方式を採用している.
+<ul>
+<li>Controller BRAM内の特定のアドレスに書き込まれたセグメント番号を使用し, 書き込むセグメントを選択する.</li>
+</ul>
+</li>
+</ul>
+<h2 id="controller"><a class="header" href="#controller">Controller</a></h2>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16 bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x0</td><td>0x000</td><td>CTL_REG</td><td>R/W</td></tr>
+<tr><td></td><td>0x001</td><td>7:0 = FPGA info</td><td>W</td></tr>
+<tr><td></td><td>0x010</td><td>EC_SYNC_CYCLE_TICKS</td><td>W</td></tr>
+<tr><td></td><td>0x011</td><td>EC_SYNC_TIME_0</td><td>W</td></tr>
+<tr><td></td><td>0x012</td><td>EC_SYNC_TIME_1</td><td>W</td></tr>
+<tr><td></td><td>0x013</td><td>EC_SYNC_TIME_2</td><td>W</td></tr>
+<tr><td></td><td>0x014</td><td>EC_SYNC_TIME_3</td><td>W</td></tr>
+<tr><td></td><td>0x020</td><td>0 = MOD_BRAM_SEGMENT</td><td>W</td></tr>
+<tr><td></td><td>0x021</td><td>MOD_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x022</td><td>MOD_FREQ_DIV_0</td><td>W</td></tr>
+<tr><td></td><td>0x023</td><td>MOD_FREQ_DIV_1</td><td>W</td></tr>
+<tr><td></td><td>0x03F</td><td>VERSION_NUM</td><td>R</td></tr>
+<tr><td></td><td>0x040</td><td>SILENT_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x041</td><td>SILENT_STEP</td><td>W</td></tr>
+<tr><td></td><td>0x050</td><td>4:0 = STM_BRAM_SEGMENT</td><td>W</td></tr>
+<tr><td></td><td>0x051</td><td>STM_CYCLE</td><td>W</td></tr>
+<tr><td></td><td>0x052</td><td>STM_FREQ_DIV_0</td><td>W</td></tr>
+<tr><td></td><td>0x053</td><td>STM_FREQ_DIV_1</td><td>W</td></tr>
+<tr><td></td><td>0x054</td><td>SOUND_SPEED_0</td><td>W</td></tr>
+<tr><td></td><td>0x055</td><td>SOUND_SPEED_1</td><td>W</td></tr>
+<tr><td></td><td>0x100</td><td>CYCLE[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F8</td><td>CYCLE[248]</td><td>W</td></tr>
+</tbody></table>
+<ul>
+<li>CTL_REG bit
+<ul>
+<li>0: LEGACY_MODE</li>
+<li>4: FORCE_FAN</li>
+<li>5: OP_MODE (0: Normal, 1: STM)</li>
+<li>6: SEQ_MODE (0: Point STM, 1: Gain STM)</li>
+<li>8: SYNC_SET</li>
+<li>15: WDT_RST</li>
+</ul>
+</li>
+</ul>
+<h2 id="modulator"><a class="header" href="#modulator">Modulator</a></h2>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (1bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x1</td><td>0x0</td><td>0x0000</td><td>mod[1]/mod[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x0</td><td>0x3FFF</td><td>mod[32767]/mod[32766]</td><td>W</td></tr>
+<tr><td></td><td>0x1</td><td>0x0000</td><td>mod[32769]/mod[32768]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1</td><td>0x3FFF</td><td>mod[65535]/mod[65534]</td><td>W</td></tr>
+</tbody></table>
+<h2 id="normal"><a class="header" href="#normal">Normal</a></h2>
+<ul>
+<li>
+<p>Normal BRAMの中身はLEGACY_MODEによって変化する.</p>
+<ul>
+<li>LEGACY_MODE = 0の場合は, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">1</span><span class="mord">3</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>のDuty比/位相を書き込む</li>
+<li>LEGACY_MODE = 1の場合は, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>のDuty比/位相を書き込む</li>
+</ul>
+</li>
+<li>
+<p>LEGACY_MODE = 0</p>
+</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x2</td><td>0x000</td><td>12:0 = phase[0]</td><td>W</td></tr>
+<tr><td></td><td>0x001</td><td>12:0 = duty[0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F0</td><td>12:0 = phase[248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F1</td><td>12:0 = duty[248]</td><td>W</td></tr>
+</tbody></table>
+<ul>
+<li>LEGACY_MODE = 1</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x2</td><td>0x000</td><td>7:0 = phase[0]<br>15:8 = duty[0]</td><td>W</td></tr>
+<tr><td></td><td>0x001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F0</td><td>7:0 = phase[248]<br>15:8 = duty[248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F1</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<h2 id="stm"><a class="header" href="#stm">STM</a></h2>
+<p>STM BRAMはPoint STMとGain STMで共用である.</p>
+<h3 id="point-stm-seq_mode--0"><a class="header" href="#point-stm-seq_mode--0">Point STM (SEQ_MODE == 0)</a></h3>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>x[0][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>y[0][13:0]/x[0][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0002</td><td>z[0][11:0]/y[0][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0003</td><td>duty_shift[0]/z[0][17:12]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0004-0x0007</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF8</td><td>x[2047][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF9</td><td>y[2047][13:0]/x[2047][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFA</td><td>z[2047][11:0]/y[2047][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFB</td><td>duty_shift[2047]/z[2047][17:12]</td><td>W</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FFC-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x00000</td><td>x[2048][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00001</td><td>y[2048][13:0]/x[2048][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00002</td><td>z[2048][11:0]/y[2048][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00003</td><td>duty_shift[2048]/z[2048][17:12]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x00004-0x00007</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF8</td><td>x[65535][15:0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF9</td><td>y[65535][13:0]/x[65535][17:16]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFA</td><td>z[65535][11:0]/y[65535][17:14]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FFB</td><td>duty_shift[65535]/z[65535][17:12]</td><td>W</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FFC-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<h3 id="gain-stm-seq_mode--1"><a class="header" href="#gain-stm-seq_mode--1">Gain STM (SEQ_MODE == 1)</a></h3>
+<ul>
+<li>LEGACY_MODE = 0</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>12:0 = phase[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>12:0 = duty[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x01F0</td><td>12:0 = phase[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F1</td><td>12:0 = duty[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F2-0x01FF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3E00</td><td>12:0 = phase[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3E01</td><td>12:0 = duty[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>12:0 = phase[31][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>12:0 = duty[31][248]</td><td>W</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x0000</td><td>12:0 = phase[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>12:0 = duty[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>︙</td><td>︙</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>12:0 = phase[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>12:0 = duty[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
+<ul>
+<li>LEGACY_MODE = 1</li>
+</ul>
+<table><thead><tr><th>BRAM_SELECT</th><th>SEGMENT (5bit)</th><th>BRAM_ADDR (14bit)</th><th>DATA (16bit)</th><th>R/W</th></tr></thead><tbody>
+<tr><td>0x3</td><td>0x00</td><td>0x0000</td><td>7:0 = phase[0][0]<br>15:8 = duty[0][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x01F0</td><td>7:0 = phase[0][248]<br>15:8 = duty[0][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x01F1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>0x01F2-0x01FF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3E00</td><td>7:0 = phase[31][0]<br>15:8 = duty[31][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3E01</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>7:0 = phase[31][248]<br>15:8 = duty[31][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x00</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x01</td><td>0x0000</td><td>7:0 = phase[32][0]<br>15:8 = duty[32][0]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x0001</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>︙</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>0x1F</td><td>︙</td><td>︙</td><td>︙</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF0</td><td>7:0 = phase[1023][248]<br>15:8 = duty[1023][248]</td><td>W</td></tr>
+<tr><td></td><td>︙</td><td>0x3FF1</td><td>-</td><td>-</td></tr>
+<tr><td></td><td>0x1F</td><td>0x3FF2-0x3FFF</td><td>-</td><td>-</td></tr>
+</tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/memory_map.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="operation"><a class="header" href="#operation">Operation</a></h1>
-<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/interface/operation.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="control"><a class="header" href="#control">Control</a></h1>
+<p>AUTD3の主な操作を以下に記す.</p>
+<ul>
+<li>初期化</li>
+<li>超音波周期の設定/同期</li>
+<li>Modulatorの設定</li>
+<li>Silencerの設定</li>
+<li>Normal動作時のDuty比/位相の設定</li>
+<li>STM動作時のDuty比/位相の設定</li>
+<li>Version情報の取得</li>
+</ul>
+<p>本章では, これらの操作をEtherCATから行う方法を記す.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/control/control.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="ethercat-datagram"><a class="header" href="#ethercat-datagram">EtherCAT Datagram</a></h1>
+<p>EtherCATからのデータは主に全デバイス共通のHeader部と各デバイス固有のBody部に分かれている.</p>
+<h2 id="header"><a class="header" href="#header">Header</a></h2>
+<p>Headerは<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>のデータ量を持つ.</p>
+<table><thead><tr><th>Index</th><th>DATA (1byte)</th></tr></thead><tbody>
+<tr><td>0</td><td>MEG_ID</td></tr>
+<tr><td>1</td><td>FPGA_CTL_REG</td></tr>
+<tr><td>2</td><td>CPU_CTL_REG</td></tr>
+<tr><td>3 - 127</td><td>HEAD_DATA</td></tr>
+</tbody></table>
+<p>3-127番目のデータは各操作ごとに異なる内容となる.</p>
+<p>MSG_IDはEtherCATのデータを区別する役割がある.
+EtherCATはその仕様上, 同じフレームが何度もデバイスに送られることがある.
+そのため, MSG_IDを参照して, すでに処理したかどうかを判定している.</p>
+<p>FPGA_CTL_REGはFPGAに書き込まれる制御レジスタであり, 以下の意味を持つ.</p>
+<ul>
+<li>FPGA_CTL_REG
+<ul>
+<li>0: LEGACY_MODE</li>
+<li>4: FORCE_FAN</li>
+<li>5: OP_MODE (0: Normal, 1: STM)</li>
+<li>6: SEQ_MODE (0: Point STM, 1: Gain STM)</li>
+<li>14: SYNC_SET</li>
+<li>15: WDT_RST</li>
+</ul>
+</li>
+</ul>
+<p>CPU_CTL_REGはCPUの制御レジスタであり, 以下の意味を持つ.</p>
+<ul>
+<li>CPU_CTL_REG
+<ul>
+<li>0: MOD_BEGIN</li>
+<li>1: MOD_END</li>
+<li>2: STM_BEGIN</li>
+<li>3: STM_END</li>
+<li>4: IS_DUTY</li>
+<li>5: CONFIG_SILENCER</li>
+<li>6: READS_FPGA_INFO</li>
+<li>7: DO_SYNC</li>
+</ul>
+</li>
+</ul>
+<h2 id="body"><a class="header" href="#body">Body</a></h2>
+<p>Bodyは<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mord">9</span><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>のデータ量を持ち, 内容は操作毎に異なる.</p>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/control/ecat_datagram.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="legacy-mode"><a class="header" href="#legacy-mode">Legacy mode</a></h1>
+<p>Legacyモードは旧ver1.x系と同様に<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>で位相とDuty比を指定するモードである.</p>
+<p>Legacyモードでは, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span></span></span></span></span></span>で位相<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>とDuty比<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>はそれぞれ,
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≪</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≪</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span></span>
+のように変換される.</p>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/control/legacy.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="operation"><a class="header" href="#operation">Operation</a></h1>
+<h2 id="初期化"><a class="header" href="#初期化">初期化</a></h2>
+<p>初期化操作では, CPU内部データ, 及び, FPGA内のデータをリセットする.
+リセットされた後は, 振動子は何も出力しない.</p>
+<p>初期化操作を行うにはMSG_IDを0x00にする. </p>
+<p>この操作は他の操作とは同時に行えない.</p>
+<h2 id="超音波周期の設定同期"><a class="header" href="#超音波周期の設定同期">超音波周期の設定/同期</a></h2>
+<p>超音波周期の設定, 及び, 同期を行う場合は, MSG_IDを0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にする.
+また, CPU_CTL_REGのDO_SYNC bitをセットし, HEAD_DATAの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にSYNC0の周期を書き込む.
+さらに, Bodyデータに超音波周期を書き込んでおく.</p>
+<p>この操作は他の操作とは同時に行えない.</p>
+<h2 id="modulatorの設定"><a class="header" href="#modulatorの設定">Modulatorの設定</a></h2>
+<p>Modulatorの設定はHeaderのみで行う.</p>
+<p>HEAD_DATAの長さはFPGA内のBRAMサイズより少ないので, いくつかのフレームに分けて送信する.</p>
+<p>Modulatorを設定する場合は, MSG_IDを0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にする.
+さらに, CPU_CTL_REGのDO_SYNC bit, CONFIG_SILENCER bitをクリアしておく必要がある.</p>
+<p>まず, 最初の変調データを書き込むには, CPU_CTL_REGのMOD_BEGIN bitをセットし, HEAD_DATAの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にHEAD_DATAに含まれる変調データのサイズを書き込み, 続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に変調サンプリング周波数分周比 (FREQ_DIV) を書き込み, さらに続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に可能な限り変調データを書き込む.
+変調データがすべて含まれている場合はCPU_CTL_REGのMOD_END bitをセットし, 終了する.
+そうでない場合は, MSG_IDを別の値に設定し, HEAD_DATAの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にHEAD_DATAに含まれる変調データのサイズを書き込み, 続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mord">2</span><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に可能な限り変調データを書き込む, というのを繰り返す.
+変調データをすべて送信した場合はCPU_CTL_REGのMOD_END bitをセットする.</p>
+<p>MOD_BEGINがセットされているフレームが送信されてから, MOD_ENDがセットされているフレームが送信されるまでの間に同期, 及び, Silencerの設定を行うことは禁止される.</p>
+<p>この操作は, 「Normal動作時のDuty比/位相の設定」と「STM動作時のDuty比/位相の設定」の操作と同時に行うことができるが, それ以外の操作とは同時に行えない.</p>
+<h2 id="silencerの設定"><a class="header" href="#silencerの設定">Silencerの設定</a></h2>
+<p>Silencerの設定はHeaderのみで行う.</p>
+<p>Silencerを設定する場合は, MSG_IDを0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にする.
+また, CPU_CTL_REGのDO_SYNC bitをクリアし, CONFIG_SILENCER bitをセットしておく必要がある.
+さらにHEAD_DATAの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に1ステップあたりの更新量 (STEP) を書き込み, 続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に更新周波数分周比を書き込む.</p>
+<p>この操作は, 「Normal動作時のDuty比/位相の設定」と「STM動作時のDuty比/位相の設定」の操作と同時に行うことができるが, それ以外の操作とは同時に行えない.</p>
+<h2 id="normal動作時のduty比位相の設定"><a class="header" href="#normal動作時のduty比位相の設定">Normal動作時のDuty比/位相の設定</a></h2>
+<p>Normal動作時のDuty比と位相データはBodyに書き込む.
+この際, FPGA_CTL_REGのLEGACY_MODE bitとCPU_CTL_REGのIS_DUTY bitに応じて書き込むデータは異なる.
+また, MSG_IDは0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にしておく.
+さらに, FPGA_CTL_REGのOP_MODE bitはクリアしておく.</p>
+<h3 id="legacy_mode--0の場合"><a class="header" href="#legacy_mode--0の場合">LEGACY_MODE = 0の場合</a></h3>
+<p>非LEGACYモードの場合は, BodyデータにはCPU_CTL_REGのIS_DUTY bitが0の場合は位相データを, 1の場合はDuty比データを順番に入れておく.</p>
+<ul>
+<li>IS_DUTY = 0</li>
+</ul>
+<table><thead><tr><th>Index</th><th>DATA (1byte)</th></tr></thead><tbody>
+<tr><td>0</td><td>phase[0][7:0]</td></tr>
+<tr><td>1</td><td>phase[0][12:8]</td></tr>
+<tr><td>︙</td><td>︙</td></tr>
+<tr><td>496</td><td>phase[248][12:8]</td></tr>
+<tr><td>497</td><td>phase[\248][12:8]</td></tr>
+</tbody></table>
+<ul>
+<li>IS_DUTY = 1</li>
+</ul>
+<table><thead><tr><th>Index</th><th>DATA (1byte)</th></tr></thead><tbody>
+<tr><td>0</td><td>duty[0][7:0]</td></tr>
+<tr><td>1</td><td>duty[0][12:8]</td></tr>
+<tr><td>︙</td><td>︙</td></tr>
+<tr><td>496</td><td>duty[248][12:8]</td></tr>
+<tr><td>497</td><td>duty[\248][12:8]</td></tr>
+</tbody></table>
+<h3 id="legacy_mode--1の場合"><a class="header" href="#legacy_mode--1の場合">LEGACY_MODE = 1の場合</a></h3>
+<p>LEGACYモードの場合は, Bodyデータには<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>の位相/Duty比データを順番に入れておく.</p>
+<table><thead><tr><th>Index</th><th>DATA (1byte)</th></tr></thead><tbody>
+<tr><td>0</td><td>phase[0]</td></tr>
+<tr><td>1</td><td>duty[0]</td></tr>
+<tr><td>︙</td><td>︙</td></tr>
+<tr><td>496</td><td>phase[248]</td></tr>
+<tr><td>497</td><td>duty[248]</td></tr>
+</tbody></table>
+<h2 id="stm動作時のduty比位相の設定"><a class="header" href="#stm動作時のduty比位相の設定">STM動作時のDuty比/位相の設定</a></h2>
+<p>STM動作時のデータはBodyに書き込む.
+この際, FPGA_CTL_REGのSTM_GAIN_MODE, LEGACY_MODE bitとCPU_CTL_REGのIS_DUTY bitに応じて書き込むデータは異なる.
+また, MSG_IDは0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にしておく.
+さらに, FPGA_CTL_REGのOP_MODE bitはセットしておく.</p>
+<h3 id="point-stm-stm_gain_mode--0"><a class="header" href="#point-stm-stm_gain_mode--0">Point STM (STM_GAIN_MODE = 0)</a></h3>
+<p>Point STMの場合も, Modulatorと同じく, いくつかのフレームに分けてデータを送信する.
+最初のフレームではCPU_CTL_REGのSTM_BEGIN bitをセットする.
+また, Bodyの先頭<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に点列数を, 続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にサンプリング周波数分周比を, さらに続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に音速を書き込み, 残りの<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mord">8</span><span class="mord">8</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に点列データを書き込む.
+点列データがすべて含まれている場合はCPU_CTL_REGのSTM_END bitをセットし, 終了する.
+そうでない場合は, MSG_IDを別の値に設定し, Bodyの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に点列データのサイズを書き込み, 続く<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mord">9</span><span class="mord">6</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>に点列データを書き込む, というのを繰り返す.
+変調データをすべて送信した場合はCPU_CTL_REGのSTM_END bitをセットする.</p>
+<h3 id="gain-stm-stm_gain_mode--1"><a class="header" href="#gain-stm-stm_gain_mode--1">Gain STM (STM_GAIN_MODE = 1)</a></h3>
+<p>Gain STMの場合は, 最初のフレームのCPU_CTL_REGのSTM_BEGIN bitをセットし, Bodyの先頭<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にサンプリング周波数分周比を書き込む. 残りは使用しない.
+その後, 1パターンずつ, Normal動作と同様のデータをBodyに書き込み送信する.
+最終フレームではCPU_CTL_REGのSTM_END bitをセットする.</p>
+<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/control/operation.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/appendix/appendix.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="setupcompile"><a class="header" href="#setupcompile">Setup/Compile</a></h1>
-<footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/appendix/setup_compile.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/appendix/faq.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="license"><a class="header" href="#license">License</a></h1>
+<p>MIT License</p>
+<p>Copyright (c) 2022 Shun Suzuki</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/appendix/license.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="contribution"><a class="header" href="#contribution">Contribution</a></h1>
+<p>バグ報告や改善案等何でも気軽にGitHubのIssueや著者宛にメールでご連絡ください.</p>
+<p>メールアドレス: suzuki[at]hapis.k.u-tokyo.ac.jp</p>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/appendix/contribution.md">Edit this file on GitHub.</a></footer>
                     </main>
 
