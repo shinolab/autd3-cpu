@@ -179,11 +179,14 @@
 <h1 id="document-history"><a class="header" href="#document-history">Document history</a></h1>
 <table><thead><tr><th style="text-align: left">Date</th><th style="text-align: left">Description</th></tr></thead><tbody>
 <tr><td style="text-align: left">2022/4/26</td><td style="text-align: left">Version 2.0 初版</td></tr>
+<tr><td style="text-align: left">2022/xx/xx</td><td style="text-align: left">Version 2.2 初版</td></tr>
 </tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/document_history.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="release-notes"><a class="header" href="#release-notes">Release notes</a></h1>
 <table><thead><tr><th style="text-align: left">Date</th><th style="text-align: left">Version</th></tr></thead><tbody>
 <tr><td style="text-align: left">2022/4/26</td><td style="text-align: left">2.0</td></tr>
+<tr><td style="text-align: left">2022/6/1</td><td style="text-align: left">2.1</td></tr>
+<tr><td style="text-align: left">2022/xx/xx</td><td style="text-align: left">2.2</td></tr>
 </tbody></table>
 <footer id="open-on-gh">Found a bug? <a href="https://github.com/shinolab/autd3-cpu/edit/master/docs/src/release_notes.md">Edit this file on GitHub.</a></footer><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="abbreviations"><a class="header" href="#abbreviations">Abbreviations</a></h1>
@@ -223,7 +226,7 @@
 <table><thead><tr><th>BRAM_SELECT</th><th>BRAM_ADDR (9bit)</th><th>DATA (16 bit)</th><th>R/W</th></tr></thead><tbody>
 <tr><td>0x0</td><td>0x000</td><td>CTL_REG</td><td>R/W</td></tr>
 <tr><td></td><td>0x001</td><td>7:0 = FPGA info</td><td>W</td></tr>
-<tr><td></td><td>0x010</td><td>EC_SYNC_CYCLE_TICKS</td><td>W</td></tr>
+<tr><td></td><td>0x010</td><td>-</td><td>-</td></tr>
 <tr><td></td><td>0x011</td><td>EC_SYNC_TIME_0</td><td>W</td></tr>
 <tr><td></td><td>0x012</td><td>EC_SYNC_TIME_1</td><td>W</td></tr>
 <tr><td></td><td>0x013</td><td>EC_SYNC_TIME_2</td><td>W</td></tr>
@@ -446,7 +449,7 @@ EtherCATはその仕様上, 同じフレームが何度もデバイスに送ら�
 <p>この操作は他の操作とは同時に行えない.</p>
 <h2 id="超音波周期の設定同期"><a class="header" href="#超音波周期の設定同期">超音波周期の設定/同期</a></h2>
 <p>超音波周期の設定, 及び, 同期を行う場合は, MSG_IDを0x05から0xFFのいずれか, 且つ, 以前のフレームとは別の値にする.
-また, CPU_CTL_REGのDO_SYNC bitをセットし, HEAD_DATAの上位<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathrm">b</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span></span></span></span></span></span>にSYNC0の周期を書き込む.
+また, CPU_CTL_REGのDO_SYNC bitをセットする.
 さらに, Bodyデータに超音波周期を書き込んでおく.</p>
 <p>この操作は他の操作とは同時に行えない.</p>
 <h2 id="modulatorの設定"><a class="header" href="#modulatorの設定">Modulatorの設定</a></h2>
